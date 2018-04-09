@@ -31,6 +31,13 @@ const queryType = new GraphQLObjectType({
                 }
                 return rolls;
             }
+        },
+        usersCount: {
+            type: GraphQLInt,
+            resolve: (_, args, { db }) => {
+                var dbo = db.db('test')
+                return dbo.collection('users').count()
+            }
         }
     }
 });
